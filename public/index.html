@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Transparency Portal | Kerala Police</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-shield-halved"></i>
+                <h1>Crime Transparency <span>Portal</span></h1>
+            </div>
+            <div class="header-tagline">RTI Public Information System</div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar / Filters -->
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+
+                    <div class="filter-group">
+                        <label for="search">Search cases</label>
+                        <input type="text" id="search" placeholder="FIR No, Location, IPC...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="station-filter">Police Station</label>
+                        <select id="station-filter">
+                            <option value="">All Stations</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="type-filter">Crime Type</label>
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                            <option value="Assault">Assault</option>
+                            <option value="Accident">Accident</option>
+                            <option value="Murder">Murder</option>
+                            <option value="Robbery">Robbery</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter">
+                            <option value="">All Statuses</option>
+                            <option value="Open">Open</option>
+                            <option value="Under Investigation">Under Investigation</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <input type="date" id="start-date">
+                        <input type="date" id="end-date">
+                    </div>
+
+                    <button id="apply-filters" class="btn btn-primary">Apply Filters</button>
+                    <button id="reset-filters" class="btn btn-secondary">Reset</button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <span class="stat-label">Total Reported</span>
+                        <span class="stat-value" id="total-count">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Under Investigation</span>
+                        <span class="stat-value" id="active-count">0</span>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="case-table">
+                        <thead>
+                            <tr>
+                                <th>FIR Number</th>
+                                <th>Date/Time</th>
+                                <th>Crime Type</th>
+                                <th>Station</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="case-list">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                    <div id="no-data" class="hidden">No cases found matching your filters.</div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Case Detail Modal -->
+    <div id="case-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Detail content loads here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
