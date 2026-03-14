@@ -50,28 +50,54 @@ http://localhost:3000
 
 ```
 CDMS/
-├── server.js          # Express server and API routes
-├── db.js              # Database configuration
-├── seed.js            # Database seeding script
-├── public/            # Frontend files
-│   ├── index.html     # Main HTML file
-│   ├── style.css      # Styling
-│   └── script.js      # Client-side JavaScript
-└── package.json       # Dependencies
+├── backend/                # Server Layer (Node.js/Express)
+│   ├── app.js              # Server entry point
+│   ├── routes/             # API Router modules
+│   │   ├── firs.js         # FIR & Case endpoints
+│   │   └── stats.js        # Statistics & Stations endpoints
+│   └── services/           # Business logic services
+│       └── pdfService.js   # PDF generation module
+├── database/               # Data Layer (SQLite)
+│   ├── db.js               # Database configuration
+│   ├── seed.js             # Initial data seeding
+│   ├── inspect_db.js       # Database inspection tool
+│   └── crime_transparency.db # Local database (git-ignored)
+└── frontend/               # Presentation Layer (HTML/CSS/JS)
+    ├── index.html          # Hero Landing Page
+    ├── portal.html         # Data Transparency Portal
+    ├── css/                # Stylesheets
+    ├── js/                 # Client-side logic
+    └── assets/             # Media & animations
 ```
 
-## API Endpoints
+## Development Team
+- **Abin Mathew Biju**
+- **Adithyan Gireesh Kumar**
+- **Amal Mathew Abraham**
 
-- `GET /api/firs` - Get all FIRs
-- `POST /api/firs` - Create new FIR
-- `GET /api/cases` - Get all cases
-- `GET /api/criminals` - Get criminal records
-- And more...
+## Installation & Running
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start the Integrated Server**:
+   ```bash
+   node backend/app.js
+   ```
+
+3. **Access the Portal**:
+   Open `http://localhost:3000` in your browser.
+
+## API Architecture
+The system follows a RESTful pattern with modular routing:
+- `GET /api/firs` - Search/Filter FIR records
+- `GET /api/stats` - Live crime statistics
+- `GET /api/firs/:id/pdf` - Dynamic PDF report generation
 
 ## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please follow the architectural patterns established in the `backend/` and `frontend/` folders.
 
 ## License
-
 MIT License
